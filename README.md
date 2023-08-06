@@ -21,3 +21,9 @@ npm install websocket
 node server.js
 ```
 and then visit `index.html` page.
+
+run send file using:
+```
+python3 send.py
+```
+
