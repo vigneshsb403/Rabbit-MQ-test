@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Client</title>
+</head>
+<body>
+    <h1>WebSocket Client</h1>
+    <div id="output"></div>
+
+    <script>
+        const outputDiv = document.getElementById('output');
+        const socket = new WebSocket('ws://localhost:3000');
+
+        socket.onopen = (event) => {
+            console.log('WebSocket connection opened');
+            outputDiv.innerHTML += '<p>WebSocket connection opened</p>';
+        };
+
+        socket.onmessage = (event) => {
+            const data = event.data;
+            console.log(data);
+            outputDiv.innerHTML += `<p>${data}</p>`;
+        };
+
+        socket.onerror = (error) => {
+            console.error('WebSocket error:', error);
+            outputDiv.innerHTML += `<p>Error: ${error}</p>`;
+        };
+
+        socket.onclose = (event) => {
+            console.log('WebSocket connection closed');
+            outputDiv.innerHTML += '<p>WebSocket connection closed</p>';
+        };
+    </script>
+</body>
+</html>
+
